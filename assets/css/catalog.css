@@ -289,11 +289,23 @@ Commonの打ち消し
   text-align: left;
   color: #000;
 }
+.category_wrap th.td_tit.stock_few, .category_wrap td.td_tit.stock_few {
+  color: #FF0000;
+}
+.category_wrap th.td_tit.stock_few span, .category_wrap td.td_tit.stock_few span {
+  color: #000;
+}
 .category_wrap th.td_tit h3, .category_wrap td.td_tit h3 {
   margin: 0 0 10px;
 }
 .category_wrap th.td_tit h3 span, .category_wrap td.td_tit h3 span {
   font-weight: normal;
+}
+.category_wrap th.td_tit h3.stock_few, .category_wrap td.td_tit h3.stock_few {
+  color: #FF0000;
+}
+.category_wrap th.td_tit h3.stock_few span, .category_wrap td.td_tit h3.stock_few span {
+  color: #000;
 }
 .category_wrap tr {
   color: #000;

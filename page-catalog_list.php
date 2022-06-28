@@ -75,7 +75,7 @@
             <?php if ( get_field( 'catalog_price' ) ): ?>
               <?php if ( get_field( 'catalog_sold' ) ): ?>
               <tr class="sold">
-                <td class="td_tit"><span><?php the_title(' '); ?></span></td>
+                <td class="td_tit"><span><h3><?php the_title(' '); ?></h3></span></td>
                 <td>
                   <p class="catalog_price">
                     <span>
@@ -86,7 +86,7 @@
               </tr>
                 <?php else: ?>
               <tr>
-                <td class="td_tit"><?php the_title(' '); ?></td>
+                <td class="td_tit"><h3 <?php if ( get_field( 'catalog_stock' ) ): ?>class="stock_few"<?php endif; ?>><?php the_title(' '); ?></h3></td>
                 <td>
                   <p class="catalog_price">
                     <?php the_field('catalog_price'); ?> / １冊
@@ -101,7 +101,7 @@
           <?php if ( get_field( 'catalog_name' ) ): ?>
               <tr>
                 <td colspan="2" class="td_tit">
-                  <h3><?php the_title(' '); ?><span>をお求めのお客様</span></h3>
+                  <h3 <?php if ( get_field( 'catalog_stock' ) ): ?>class="stock_few"<?php endif; ?>><?php the_title(' '); ?><span>をお求めのお客様</span></h3>
                   <p>図録は下記、「<?php the_field('catalog_name'); ?>」にて販売いたします。</p>
                     <p class="catalog_link">
                     <a href="<?php the_field('catalog_link'); ?>">

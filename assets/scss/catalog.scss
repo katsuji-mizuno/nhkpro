@@ -231,11 +231,23 @@ Commonの打ち消し
       &.td_tit{
         text-align: left;
         color: #000;
+        &.stock_few{
+          color: #FF0000;
+          span{
+            color: #000;
+          }
+        }
         h3{
           span{
             font-weight: normal;
           }
           margin: 0 0 10px;
+          &.stock_few{
+            color: #FF0000;
+            span{
+              color: #000;
+            }
+          }
         }
       }
     }
