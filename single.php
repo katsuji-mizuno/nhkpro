@@ -50,34 +50,73 @@
     <ul>
     <?php while (have_posts()) : the_post(); ?>
 
+    <?php if( get_field('display_off') === "常に表示"): ?>
 
-    <li class="post_wrap">
-      <a href="<?php the_permalink(); ?>">
-        <h3><?php the_title(); ?></h3>
-        <div class="post_set">
-          <div class="post_thum">
-            <?php if (has_post_thumbnail()) : ?>
-                  <?php the_post_thumbnail('thum_event'); ?>
-            <?php else : ?>
-                  <img src="<?php bloginfo('template_url'); ?>/assets/images/no_image.png"  alt="デフォルト画像" />
-            <?php endif ; ?>
+      <li class="post_wrap">
+        <a href="<?php the_permalink(); ?>">
+          <h3><?php the_title(); ?></h3>
+          <div class="post_set">
+            <div class="post_thum">
+              <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('thum_event'); ?>
+              <?php else : ?>
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/no_image.png"  alt="デフォルト画像" />
+              <?php endif ; ?>
+            </div>
+            <div class="field">
+              <ul>
+                <li>
+                  <div><?php the_field('day_title'); ?></div>
+                  <p><?php the_field('day_display'); ?></p>
+                </li>
+                <li>
+                  <div><?php the_field('place_title'); ?></div>
+                  <p><?php the_field('place_display'); ?></p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="field">
-            <ul>
-              <li>
-                <div><?php the_field('day_title'); ?></div>
-                <p><?php the_field('day_display'); ?></p>
-              </li>
-              <li>
-                <div><?php the_field('place_title'); ?></div>
-                <p><?php the_field('place_display'); ?></p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </a>
-    </li>
+        </a>
+      </li>
+    <?php elseif( get_field('display_off') === "常に非表示"): ?>
+    <?php elseif( get_field('display_off') === "表示終了日になったら非表示"): ?>
+      <?php
+                    date_default_timezone_set('Asia/Tokyo');
+                    $today = date("Ymd");
+                    $date_end = get_field('end_day');
+                ?>
+          <?php if(strtotime($today) <= strtotime($date_end)) : ?>
 
+            <li class="post_wrap">
+        <a href="<?php the_permalink(); ?>">
+          <h3><?php the_title(); ?></h3>
+          <div class="post_set">
+            <div class="post_thum">
+              <?php if (has_post_thumbnail()) : ?>
+                    <?php the_post_thumbnail('thum_event'); ?>
+              <?php else : ?>
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/no_image.png"  alt="デフォルト画像" />
+              <?php endif ; ?>
+            </div>
+            <div class="field">
+              <ul>
+                <li>
+                  <div><?php the_field('day_title'); ?></div>
+                  <p><?php the_field('day_display'); ?></p>
+                </li>
+                <li>
+                  <div><?php the_field('place_title'); ?></div>
+                  <p><?php the_field('place_display'); ?></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </a>
+      </li>
+
+          <?php else : ?>
+        <?php endif; ?>
+      <?php endif; ?>
     <?php endwhile; ?>
     </ul>
     <?php endif; ?>

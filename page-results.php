@@ -77,7 +77,7 @@
           array(
           'cat' => $category->term_id,
           'posts_per_page' => -1,
-          'order' => 'ASC',
+          'order' => 'DESC',
           'orderby' => 'meta_value',
           'meta_key' => 'result_year',
           ));
